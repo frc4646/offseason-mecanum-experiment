@@ -1,40 +1,40 @@
-#include "DriveWithJoysticks.h"
+#include "MecanumCommand.h"
 #include "../Subsystems/BusterDrive.h"
 
-DriveWithJoysticks::DriveWithJoysticks()
+MecanumCommand::MecanumCommand()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(CommandBase::busterDrive);
+	Requires(busterDrive);
 }
 
 // Called just before this Command runs the first time
-void DriveWithJoysticks::Initialize()
+void MecanumCommand::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveWithJoysticks::Execute()
+void MecanumCommand::Execute()
 {
-	busterDrive->TakeJoystickInputs(oi->GetLeftJoystick(), oi->GetLeftJoystick());
+	busterDrive->MecanumDrive(oi->GetLeftJoystick(), oi->GetLeftJoystick(),oi->GetLeftJoystick());
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveWithJoysticks::IsFinished()
+bool MecanumCommand::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void DriveWithJoysticks::End()
+void MecanumCommand::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveWithJoysticks::Interrupted()
+void MecanumCommand::Interrupted()
 {
 	busterDrive->Stop();
 }

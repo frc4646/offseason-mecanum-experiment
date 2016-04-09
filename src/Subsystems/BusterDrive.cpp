@@ -5,11 +5,13 @@
 
 BusterDrive::BusterDrive()
 	: Subsystem("BusterDrive")
-		,LeftDrive(1)
-		,RightDrive(2)
+		,LeftFrontDrive(1)
+		,LeftRearDrive(2)
+		,RightFrontDrive(3)
+		,RightRearDrive(4)
 //		,Left(new TripleDrive(LeftSpeedController1, LeftSpeedController2, LeftSpeedController3))
 //		,Right(new TripleDrive(RightSpeedController1, RightSpeedController2, RightSpeedController3))
-		,DriveTrain(LeftDrive,RightDrive)
+		,DriveTrain(LeftFrontDrive,RightFrontDrive,LeftRearDrive,RightRearDrive)
 
 {
 
@@ -24,7 +26,7 @@ void BusterDrive::InitDefaultCommand()
 
 void BusterDrive::TakeJoystickInputs(Joystick &left, Joystick &right)
 {
-	DriveTrain.TankDrive(left, right);
+	DriveTrain.TankDrive(left.GetRawAxis(1), right.GetRawAxis(5));
 }
 
 void BusterDrive::Stop()
@@ -39,4 +41,9 @@ void BusterDrive::Drive(double speed, double curve)
 
 void BusterDrive::ArcadeDrive(Joystick& left) {
 	DriveTrain.ArcadeDrive(left);
+}
+
+void BusterDrive::MecanumDrive(Joystick& left, Joystick& right,
+		Joystick& slide) {
+	DriveTrain.MecanumDrive_Cartesian(left.GetRawAxis(1), right.GetRawAxis(5),slide.GetRawAxis(0));
 }

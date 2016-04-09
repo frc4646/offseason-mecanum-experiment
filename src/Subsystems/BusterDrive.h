@@ -14,9 +14,12 @@ public:
 	void Drive(double speed, double curve);
 	void ArcadeDrive(Joystick& left);
 	void Stop();
+	void MecanumDrive(Joystick& left, Joystick& right, Joystick& slide);
 private:
-	Talon LeftDrive;
-	Talon RightDrive;
+	Talon LeftFrontDrive;
+	Talon LeftRearDrive;
+	Talon RightFrontDrive;
+	Talon RightRearDrive;
 //	DriveSystem Left;
 //	DriveSystem Right;
 	RobotDrive DriveTrain;
