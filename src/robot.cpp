@@ -13,6 +13,9 @@ private:
 	RingForTime *ringTime;
 	LiveWindow *lw;
 
+	void DisabledInit(){
+
+	}
 
 	void RobotInit()
 	{

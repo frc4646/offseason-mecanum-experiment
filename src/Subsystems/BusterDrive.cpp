@@ -22,6 +22,7 @@ void BusterDrive::InitDefaultCommand()
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 	SetDefaultCommand(new DriveWithJoysticks());
+	DriveTrain.SetSafetyEnabled(false);
 }
 
 void BusterDrive::TakeJoystickInputs(Joystick &left, Joystick &right)
