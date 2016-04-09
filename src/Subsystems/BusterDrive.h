@@ -14,7 +14,9 @@ public:
 	void Drive(double speed, double curve);
 	void ArcadeDrive(Joystick& left);
 	void Stop();
-	void MecanumDrive(Joystick& left, Joystick& right, Joystick& slide);
+	void MecanumDrive(Joystick& left, Joystick& right, Joystick& twist);
+	double GetHeading();
+	void ResetGyro();
 private:
 	Talon LeftFrontDrive;
 	Talon LeftRearDrive;
@@ -23,6 +25,7 @@ private:
 //	DriveSystem Left;
 //	DriveSystem Right;
 	RobotDrive DriveTrain;
+	Gyro gyro;
 };
 
 #endif
